@@ -1,0 +1,41 @@
+{
+  "cwd": "/Users/cuongduong/Project/Personal/learn_vue/f7_app",
+  "type": [
+    "web",
+    "pwa",
+    "cordova"
+  ],
+  "name": "My App",
+  "pkg": "io.framework7.myapp",
+  "framework": "vue",
+  "template": "single-view",
+  "cssPreProcessor": "scss",
+  "bundler": "webpack",
+  "cordova": {
+    "folder": "cordova",
+    "platforms": [
+      "ios"
+    ],
+    "plugins": [
+      "cordova-plugin-statusbar",
+      "cordova-plugin-keyboard",
+      "cordova-plugin-splashscreen",
+      "cordova-plugin-wkwebview-engine"
+    ]
+  },
+  "webpack": {
+    "developmentSourceMap": true,
+    "productionSourceMap": true,
+    "hashAssets": false,
+    "preserveAssetsPaths": false,
+    "inlineAssets": true
+  },
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false
+}
