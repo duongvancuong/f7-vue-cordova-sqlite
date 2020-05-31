@@ -4755,7 +4755,14 @@ loader-utils@^2.0.0:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
-localforage@^1.7.3:
+localforage-startswith@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/localforage-startswith/-/localforage-startswith-1.4.0.tgz#cda3501dbb8cc76b63897ae09317e9ca6fdc921c"
+  integrity sha1-zaNQHbuMx2tjiXrgkxfpym/ckhw=
+  dependencies:
+    localforage ">=1.4.0"
+
+localforage@>=1.4.0, localforage@^1.7.3:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/localforage/-/localforage-1.7.3.tgz#0082b3ca9734679e1bd534995bdd3b24cf10f204"
   integrity sha512-1TulyYfc4udS7ECSBT2vwJksWbkwwTX8BzeUIiq8Y07Riy7bDAAnxDaPU/tWyOVmQAcWJIEIFP9lPfBGqVoPgQ==

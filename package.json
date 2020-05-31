@@ -28,6 +28,7 @@
     "framework7-icons": "^3.0.1",
     "framework7-vue": "^5.7.5",
     "localforage": "^1.7.3",
+    "localforage-startswith": "^1.4.0",
     "template7": "^1.4.2",
     "vue": "^2.6.11",
     "vuex": "^3.4.0"

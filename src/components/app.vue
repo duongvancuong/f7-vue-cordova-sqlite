@@ -17,6 +17,7 @@
 
   import cordovaApp from '../js/cordova-app.js';
   import routes from '../js/routes.js';
+  import Sqlite from '../store/sqlite.js';
 
   export default {
     data() {
@@ -25,6 +26,7 @@
           id: 'io.framework7.myapp', // App bundle ID
           name: 'My App', // App name
           theme: 'auto', // Automatic theme detection
+          sqlite_db: null,
 
           // App routes
           routes: routes,
@@ -51,17 +53,17 @@
         user: state => state.user,
       })
     },
-    methods: {
-      alertLoginData() {
-        this.$f7.dialog.alert('Username: ' + this.username + '<br>Password: ' + this.password, () => {
-          this.$f7.loginScreen.close();
-        });
-      }
-    },
+    methods: { },
     mounted() {
       this.$f7ready((f7) => {
+        document.addEventListener('deviceready', function() {
+          this.sqlite_db = new Sqlite();
+          const createTbQuery = "CREATE TABLE Todos (title, status, id)";
+          this.sqlite_db.createTable(createTbQuery);
+        });
         // Init cordova APIs (see cordova-app.js)
         if (Device.cordova) {
+          f7.dialog.alert('Check Device');
           cordovaApp.init(f7);
         }
         // Call F7 APIs here

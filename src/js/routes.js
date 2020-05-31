@@ -1,5 +1,4 @@
 import HomePage from '../pages/home.vue';
-import AboutPage from '../pages/about.vue';
 import FormPage from '../pages/form.vue';
 import Todos from '../pages/todos.vue';
 
@@ -12,10 +11,6 @@ var routes = [
   {
     path: '/',
     component: HomePage,
-  },
-  {
-    path: '/about/',
-    component: AboutPage,
   },
   {
     path: '/form/',

@@ -18,7 +18,8 @@
     "cordova-plugin-splashscreen": "^5.0.3",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-wkwebview-engine": "^1.2.1",
-    "cordova-plugin-wkwebview-file-xhr": "^2.1.4"
+    "cordova-plugin-wkwebview-file-xhr": "^2.1.4",
+    "cordova-sqlite-storage": "^5.0.0"
   },
   "cordova": {
     "plugins": {
@@ -26,7 +27,8 @@
       "cordova-plugin-keyboard": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-wkwebview-file-xhr": {},
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-sqlite-storage": {}
     },
     "platforms": [
       "ios"

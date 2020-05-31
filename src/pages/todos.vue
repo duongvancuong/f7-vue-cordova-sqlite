@@ -65,8 +65,8 @@
         newTodoTitle: '',
         task: {
           title: '',
-          id: '',
           status: 'todo',
+          id: '',
         },
         mode: '',
       };
@@ -76,6 +76,9 @@
         todos: state => state.todos,
       })
     },
+    mounted() {
+      this.fetchTodos();
+    }, 
     methods: {
       closePopup() {
         this.popupOpened = false;
@@ -110,7 +113,7 @@
         self.popupOpened = false;
         app.dialog.alert('Task is edited!', 'Edit Task');
       },
-      ...mapActions(["addTodo", "deleteTask", "editTask"])
+      ...mapActions(["addTodo", "deleteTask", "editTask", "fetchTodos"])
    },
   };
 </script>

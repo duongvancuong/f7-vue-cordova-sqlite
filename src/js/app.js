@@ -1,6 +1,10 @@
 // Import Vue
 import Vue from 'vue';
 
+// Import localforage
+// import localforage from 'localforage';
+// require('localforage-startswith');
+
 // Import Framework7
 import Framework7 from 'framework7/framework7-lite.esm.bundle.js';
 
@@ -16,12 +20,17 @@ import '../css/app.scss';
 
 // Import VUEX  store
 import store from '../store';
+import { sqlite } from '../store/sqlite.js';
 
 // Import App Component
 import App from '../components/app.vue';
 
 // Init Framework7-Vue Plugin
 Framework7.use(Framework7Vue);
+
+// localforage.config({
+//   name: 'todo_app',
+// });
 
 // Init App
 new Vue({
