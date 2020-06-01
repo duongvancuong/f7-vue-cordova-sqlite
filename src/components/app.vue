@@ -13,11 +13,10 @@
 </template>
 <script>
   import { Device }  from 'framework7/framework7-lite.esm.bundle.js';
-  import { mapState } from 'Vuex';
 
   import cordovaApp from '../js/cordova-app.js';
   import routes from '../js/routes.js';
-  import Sqlite from '../store/sqlite.js';
+  import { createTable } from '../api';
 
   export default {
     data() {
@@ -26,7 +25,6 @@
           id: 'io.framework7.myapp', // App bundle ID
           name: 'My App', // App name
           theme: 'auto', // Automatic theme detection
-          sqlite_db: null,
 
           // App routes
           routes: routes,
@@ -48,22 +46,14 @@
         },
       };
     },
-    computed: {
-      ...mapState({
-        user: state => state.user,
-      })
-    },
     methods: { },
     mounted() {
       this.$f7ready((f7) => {
         document.addEventListener('deviceready', function() {
-          this.sqlite_db = new Sqlite();
-          const createTbQuery = "CREATE TABLE Todos (title, status, id)";
-          this.sqlite_db.createTable(createTbQuery);
+          createTable();
         });
         // Init cordova APIs (see cordova-app.js)
         if (Device.cordova) {
-          f7.dialog.alert('Check Device');
           cordovaApp.init(f7);
         }
         // Call F7 APIs here
