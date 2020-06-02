@@ -4,7 +4,7 @@
       <f7-nav-left>
         <f7-link icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu" panel-open="left"></f7-link>
       </f7-nav-left>
-      <f7-nav-title-large>Hello {{ user.name }}</f7-nav-title-large>
+      <f7-nav-title-large>Hello</f7-nav-title-large>
     </f7-navbar>
     <f7-block-title>Actions </f7-block-title>
     <f7-list>
@@ -12,18 +12,4 @@
     </f7-list>
   </f7-page>
 </template>
-<script>
-  import { mapState } from 'Vuex';
-
-  export default {
-    data() {
-      return { };
-    },
-    computed: {
-      ...mapState({
-        user: state => state.user,
-      })
-    },
-  }
-</script>
 
