@@ -2,7 +2,7 @@ import SqliteStorage from '../store/sqlite.js';
 
 class Tasks {
   constructor() {
-    this.db = new SqliteStorage("sample.db");
+    this.db = new SqliteStorage(process.env.VUE_APP_DB_NAME);
   }
 
   createTable() {
