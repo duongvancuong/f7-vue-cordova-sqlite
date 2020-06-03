@@ -41,3 +41,4 @@ cordova/www/
 
 # Production build
 www/
+.env

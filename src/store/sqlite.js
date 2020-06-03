@@ -1,6 +1,16 @@
 class Sqlite {
-  constructor() {
-    this.db = window.sqlitePlugin.openDatabase({name: 'sample.db', location: 'default'});
+  constructor(dbName, location = 'default') {
+    this.dbName = dbName;
+    this.location = location;
+    this.db = window.sqlitePlugin.openDatabase({ name: this.dbName, location: this.location });
+  }
+
+  deleteDB() {
+    window.sqlitePlugin.deleteDatabase({ name: this.dbName, location: this.location }, function() {
+      console.log("Database is deleted successfully!");
+    }, function(error){
+      console.error(error);
+    });
   }
 
   createTable(query) {

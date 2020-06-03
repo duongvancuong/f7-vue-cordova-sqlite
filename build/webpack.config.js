@@ -9,6 +9,9 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const path = require('path');
 
+const getClientEnvironment = require('./env');
+const paths = require('./paths');
+
 function resolvePath(dir) {
   return path.join(__dirname, '..', dir);
 }
@@ -16,6 +19,10 @@ function resolvePath(dir) {
 const env = process.env.NODE_ENV || 'development';
 const target = process.env.TARGET || 'web';
 const isCordova = target === 'cordova';
+
+const { publicPath } = paths;
+const publicUrl = publicPath.slice(0, -1);
+const clienEnv = getClientEnvironment(publicUrl);
 
 
 module.exports = {
@@ -164,6 +171,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
+      ...clienEnv.stringified,
       'process.env.NODE_ENV': JSON.stringify(env),
       'process.env.TARGET': JSON.stringify(target),
     }),
