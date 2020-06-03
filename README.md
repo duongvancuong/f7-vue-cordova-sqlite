@@ -57,6 +57,19 @@ Framework7 app created with following options:
 * 📱 `build-dev-cordova` - build cordova app using development mode (faster build without minification and optimization)
 * 📱 `build-prod-cordova` - build cordova app
 
+## cordova-sqlite-storage
+[Docs](https://github.com/xpbrew/cordova-sqlite-storage)
+
+## State management architecture (Vuex + Sqlite)
+![Untitled Diagram (1)](https://user-images.githubusercontent.com/19904857/83619248-cfab6000-a5b5-11ea-960b-dcdd70f33a52.png)
+
+The main flow of this architecture is described by me as the diagram above (I draw a little bad). Specifically it will be as follows:
+- **(1)**: The Vue app performs an [action](https://vuex.vuejs.org/guide/actions.html)
+- **(2)**: The action will make a sqlite service reference to interact with sqlite at steps **(3)** and **(4)**
+- **(5)**: The **action** will receive data from **SQLite Service**
+- **(6), (7)**: The [Mutaion](https://vuex.vuejs.org/guide/mutations.html) receive data and update state
+- **(8)**: The vue app will get the new state and re-render the view
+
 ## WebPack
 
 There is a webpack bundler setup. It compiles and bundles all "front-end" resources. You should work only with files located in `/src` folder. Webpack config located in `build/webpack.config.js`.
