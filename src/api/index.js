@@ -2,14 +2,14 @@ import SqliteStorage from '../store/sqlite.js';
 
 export const createTable = () => {
   const sqlite = new SqliteStorage();
-const query = `CREATE TABLE IF NOT EXISTS Tasks (\
-                  id INTEGER PRIMARY KEY,\
-                  title TEXT NOT NULL,\
-                  detail TEXT,\
-                  startAt TEXT NOT NULL,\
-                  endAt TEXT NOT NULL,\
-                  status TEXT NOT NULL \
-                )`;
+  const query = `CREATE TABLE IF NOT EXISTS Tasks (\
+                                        id INTEGER PRIMARY KEY,\
+                                        title TEXT NOT NULL,\
+                                        detail TEXT,\
+                                        startAt TEXT NOT NULL,\
+                                        endAt TEXT NOT NULL,\
+                                        status TEXT NOT NULL \
+                                        )`;
 
   sqlite.createTable(query);
 };

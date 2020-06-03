@@ -16,7 +16,7 @@
 
   import cordovaApp from '../js/cordova-app.js';
   import routes from '../js/routes.js';
-  import { createTable } from '../api';
+  import Tasks from '../models/tasks.js';
 
   export default {
     data() {
@@ -50,7 +50,8 @@
     mounted() {
       this.$f7ready((f7) => {
         document.addEventListener('deviceready', function() {
-          createTable();
+          const _taskModel = new Tasks();
+          _taskModel.createTable();
         });
         // Init cordova APIs (see cordova-app.js)
         if (Device.cordova) {

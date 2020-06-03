@@ -1,16 +1,14 @@
-import {
-  getTasks,
-  addTask,
-  updateTask,
-  deleteTask,
-} from '../../../api';
+import Tasks from '../../../models/tasks.js';
 
 export default {
   async actionFetch({ commit }) {
+    console.log(this);
     console.log("---------Action FETCH----------");
 
     commit('FETCH_TASKS', { status: 'loading', tasks: [] });
-    const tasks = await getTasks();
+    const _taskModel = new Tasks();
+    const tasks = await _taskModel.getTasks();
+
     commit('FETCH_TASKS', { status: 'done', tasks });
 
     console.log("-------END FETCH---------------");
@@ -23,7 +21,8 @@ export default {
       return;
     }
     commit('ADD_TASK', { status: 'create' });
-    const data = await addTask(task);
+    const _taskModel = new Tasks();
+    const data = await _taskModel.addTask(task);
     commit('ADD_TASK', { status: 'done', task: data });
 
     console.log("-------END CREATE---------------");
@@ -36,7 +35,8 @@ export default {
     }
 
     commit('DELETE_TASK', { status: 'delete' });
-    const id = await deleteTask(task.id);
+    const _taskModel = new Tasks();
+    const id = await _taskModel.deleteTask(task.id);
     commit('DELETE_TASK', { status: 'done', id: task.id });
 
     console.log("-------END ACTION DELETE---------------");
@@ -48,7 +48,8 @@ export default {
       return;
     }
     commit('EDIT_TASK', { status: 'update' });
-    const data = await updateTask(task);
+    const _taskModel = new Tasks();
+    const data = await _taskModel.updateTask(task);
     commit('EDIT_TASK', { status: 'done', task: data });
 
     console.log("-------END ACTION EDIT---------------");
