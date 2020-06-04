@@ -1,9 +1,9 @@
 <template>
   <f7-app :params="f7params" >
-    <f7-panel left cover theme-dark>
+    <f7-panel left cover swipe>
       <f7-view>
-        <f7-page>
-          <f7-navbar title="Left Panel"></f7-navbar>
+        <f7-page class="panel-background">
+          <f7-navbar title="Setting"></f7-navbar>
           <f7-block>Left panel content goes here</f7-block>
         </f7-page>
       </f7-view>
@@ -11,6 +11,12 @@
     <f7-view main class="safe-areas" url="/"></f7-view>
   </f7-app>
 </template>
+<style>
+.panel-background {
+  background-color: #c349e24d;
+}
+  
+</style>
 <script>
   import { Device }  from 'framework7/framework7-lite.esm.bundle.js';
 
@@ -49,6 +55,7 @@
     methods: { },
     mounted() {
       this.$f7ready((f7) => {
+        // f7.utils.colorThemeCSSProperties('#892eafbf');
         document.addEventListener('deviceready', function() {
           const _taskModel = new Tasks();
           _taskModel.createTable();
