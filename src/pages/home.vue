@@ -25,7 +25,7 @@
             </div>
           </div>
         </f7-col>
-        <f7-col class="home__action">
+        <f7-col class="home__action" @click="weatherPage">
           <div class="display-flex flex-direction-column justify-content-center">
             <img class="home__item align-self-center" src="static/icons/cloudy.svg" width="50%"/>
             <div class="align-self-center">
@@ -86,6 +86,9 @@ export default {
     },
     ComponentTemplatePage() {
       this.$f7router.navigate('/components/');
+    },
+    weatherPage() {
+      this.$f7router.navigate('/weather/');
     }
   },
 }  
