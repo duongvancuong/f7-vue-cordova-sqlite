@@ -1,8 +1,18 @@
 import Tasks from '../../../models/tasks.js';
 
 export default {
+  async actionGetByStatus({ commit }, status) {
+    console.log("---------Action GET TASK BY STATUS----------");
+
+    commit('GET_BY_STATUS', { status: 'loading', tasks: [] });
+    const _taskModel = new Tasks();
+    const tasks = await _taskModel.byStatus(status);
+
+    commit('GET_BY_STATUS', { status: 'done', tasks });
+
+    console.log("-------END GET TASK BY STATUS---------------");
+  },
   async actionFetch({ commit }) {
-    console.log(this);
     console.log("---------Action FETCH----------");
 
     commit('FETCH_TASKS', { status: 'loading', tasks: [] });

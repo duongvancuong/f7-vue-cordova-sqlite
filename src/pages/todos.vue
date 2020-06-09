@@ -1,27 +1,19 @@
 <template>
-  <f7-page name="about">
+  <f7-page name="todos">
     <f7-navbar title="Task" back-link="Back"></f7-navbar>
     <f7-block-title>List Tasks</f7-block-title>
-    <f7-list v-if="status === 'done'">
-      <f7-list-item 
-        v-for="task in tasks"
-        :key="task.id"
-        name="task"
-        swipeout
-        :header="task.title" 
-        :title="formatDate(task.startAt, task.endAt)" 
-        :after="task.status">
-        <f7-swipeout-actions right>
-          <f7-swipeout-button color="green" @click="showEdit(task)">
-            Edit
-          </f7-swipeout-button>
-
-          <f7-swipeout-button color="red" @click="onDeleted(task)">
-            Delete
-          </f7-swipeout-button>
-        </f7-swipeout-actions>
-      </f7-list-item>
-    </f7-list>
+    <Task 
+      v-if="status === 'done'"
+      v-for="task in tasks"
+      :key="task.id"
+      name="task"
+      :title="task.title" 
+      :subtitle="formatDate(task.startAt, task.endAt)" 
+      :status="task.status"
+      :showEdit="() => showEdit(task)"
+      :deleteTask="() => onDeleted(task)"
+      :updateStatus="(status) => updateStatus(task, status)"
+    />
 
     <f7-popup :opened="popupOpened" @popup:closed="closePopup" swipe-to-close>
       <f7-page>
@@ -91,16 +83,34 @@
       </f7-page>
     </f7-popup>
     
-    <f7-fab position="right-bottom" slot="fixed" @click="popupOpened = true; mode = 'add'">
-      <f7-icon ios="f7:plus" aurora="f7:plus" md="material:add"></f7-icon>
-      <f7-icon ios="f7:xmark" aurora="f7:xmark" md="material:add"></f7-icon>
+    <f7-fab position="right-bottom" slot="fixed" >
+      <f7-icon ios="f7:pencil" aurora="f7:pencil" md="material:pencil"></f7-icon>
+      <f7-icon ios="f7:pencil_slash" aurora="f7:pencil_slash" md="material:pencil_slash"></f7-icon>
+      <f7-fab-buttons position="top">
+        <f7-fab-button label="Add" @click="popupopened = true; mode = 'add'">
+          <f7-icon ios="f7:plus" aurora="f7:plus" md="material:add"></f7-icon>
+        </f7-fab-button>
+        <f7-fab-button label="done" @click="() => actionGetByStatus('done')">
+          <f7-icon ios="f7:text_badge_checkmark" aurora="f7:text_badge_checkmark" md="material:text_badge_checkmark"></f7-icon>
+        </f7-fab-button>
+        <f7-fab-button label="doing" @click="() => actionGetByStatus('doing')">
+          <f7-icon ios="f7:text_badge_star" aurora="f7:text_badge_star" md="material:text_badge_star"></f7-icon>
+        </f7-fab-button>
+        <f7-fab-button label="todo" @click="() => actionGetByStatus('todo')">
+          <f7-icon ios="f7:text_badge_plus" aurora="f7:text_badge_plus" md="material:text_badge_plus"></f7-icon>
+        </f7-fab-button>
+      </f7-fab-buttons>
     </f7-fab>
   </f7-page>
 </template>
 <script>
   import { mapState, mapActions } from 'Vuex';
+  import Task from '../components/task.vue';
 
   export default {
+    components: {
+      Task,
+    },
     data() {
       return { 
         popupOpened: false,
@@ -152,6 +162,15 @@
         const _endAt = new Date(endAt);
         return `${_startAt.toLocaleDateString()} ~ ${_endAt.toLocaleDateString()}`;  
       },
+      updateStatus(task, status) {
+        this.task = Object.assign({ 
+          ...task, 
+          startAt: [ new Date(task.startAt) ], 
+          endAt: [ new Date(task.endAt) ],
+          status,
+        });
+        this.actionEdit(this.task);
+      },
       closePopup() {
         this.popupOpened = false;
         this.task = {
@@ -186,7 +205,7 @@
         const self = this;
         self.actionEdit(self.task);
       },
-      ...mapActions("task", ["actionAdd", "actionDelete", "actionEdit", "actionFetch"])
+      ...mapActions("task", ["actionGetByStatus", "actionAdd", "actionDelete", "actionEdit", "actionFetch"])
    },
   };
 </script>
