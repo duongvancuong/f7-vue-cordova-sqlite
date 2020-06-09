@@ -52,7 +52,6 @@
         },
       };
     },
-    methods: { },
     mounted() {
       this.$f7ready((f7) => {
         // f7.utils.colorThemeCSSProperties('#892eafbf');
@@ -63,6 +62,7 @@
         // Init cordova APIs (see cordova-app.js)
         if (Device.cordova) {
           cordovaApp.init(f7);
+          screen.orientation.lock('portrait');
         }
         // Call F7 APIs here
       });

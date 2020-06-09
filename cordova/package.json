@@ -15,6 +15,7 @@
   "dependencies": {
     "cordova-ios": "^5.1.1",
     "cordova-plugin-keyboard": "^1.2.0",
+    "cordova-plugin-screen-orientation": "^3.0.2",
     "cordova-plugin-splashscreen": "^5.0.3",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-wkwebview-engine": "^1.2.1",
@@ -28,7 +29,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-wkwebview-file-xhr": {},
       "cordova-plugin-whitelist": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-screen-orientation": {}
     },
     "platforms": [
       "ios"

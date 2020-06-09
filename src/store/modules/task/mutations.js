@@ -34,5 +34,11 @@ export default {
     state.tasks = tasks;
     console.log("-----END COMMIT FETCH_TASKS------");
   },
+  GET_BY_STATUS: (state, { status, tasks }) => {
+    console.log("-----COMMIT GET_BY_STATUS------");
+    state.status = status;
+    state.tasks = tasks;
+    console.log("-----END COMMIT GET_BY_STATUS------");
+  },
 };
 

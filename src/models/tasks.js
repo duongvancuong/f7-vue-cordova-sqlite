@@ -30,6 +30,18 @@ class Tasks {
     return data;
   }
 
+  async byStatus(status) {
+    const query = "SELECT * from Tasks WHERE status = ?";
+    let data = [];
+    const results = await this.db.select(query, [status]);
+
+    for(var x = 0; x < results.rows.length; x++) {
+      data.push(results.rows.item(x))
+    }
+
+    return data;
+  }
+
   async addTask(task) {
     const params = Object.values(task);
     console.log("---------SQLite Create-------");
