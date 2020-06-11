@@ -1,15 +1,19 @@
 <template>
-  <f7-card class="weather">
+  <f7-card class="weather weather--bg">
     <f7-card-content :padding="false">
       <div>
         <f7-card-content>
           <div class="display-flex flex-direction-column justify-content-center">
-            <img class="align-self-center" :src="iconUrl" width="35%" />
             <div class="align-self-center">
-              <p class="weather__temp"> {{ temperature }} °C </p> 
+              <p class="weather__text weather__text--large weather--mg-0 animate__animated animate__bounceInLeft"> {{ localName }} </p> 
+            </div>
+            <p class="align-self-center weather__text weather__text--small weather--mg-0 animate__animated animate__zoomIn"> {{ dateTime }} </p> 
+            <img class="align-self-center animate__animated animate__slideInDown" :src="iconUrl" width="50%" />
+            <div class="align-self-center">
+              <p class="weather__text weather__text--large animate__animated animate__bounceInRight"> {{ temperature }}°C </p> 
             </div>
             <div class="align-self-center">
-              <p class="weather__desc"> {{ description }} </p> 
+              <p class="weather__text weather__text--small animate__animated animate__bounceInUp"> {{ description }} </p> 
             </div>
           </div>
         </f7-card-content>
@@ -19,20 +23,24 @@
 </template>
 <style lang="scss" scoped>
 .weather{
-  &--background-pink {
-    background-color: #b468e78c;
+  color: #fff;
+
+  &--bg {
+    background: #fff0;
+    box-shadow: none;
   }
-  &__temp {
+
+  &__text {
     font-family: monospace;
-    font-size: xxx-large;
-    font-weight: bold;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  &__desc {
-    font-family: monospace;
-    font-size: xx-large;
-    font-weight: bold;
+    margin: 0;
+
+    &--large {
+      font-size: 40px;
+      font-weight: bold;
+    }
+    &--small {
+      font-size: 25px;
+    }
   }
 }
 </style>
@@ -52,12 +60,21 @@ export default {
       type: String,
       required: true,
     },
+    location: {
+      type: String,
+      required: true,
+    },
+    dateTime: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return { 
       iconUrl: this.icon_url,
       temperature: this.temp - 273.15,
       description: this.desc,
+      localName: this.location,
     };
   },
   methods: { },
