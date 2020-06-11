@@ -1,10 +1,12 @@
 <template>
-  <f7-page>
+  <f7-page class="weather weather--bg-blue">
     <weather-card 
       v-if="status === 'done'"
       :icon_url="iconUrl"
       :temp="temperature"
       :desc="description"
+      :location="data.name"
+      :date-time="dateTime"
     />
     <f7-block v-if="status === 'done'">
       <f7-row>
@@ -34,12 +36,19 @@
   </f7-page>
 </template>
 <style lang="scss">
+.weather {
+  &--bg-blue {
+    background: #8aaded;
+  }
+}
 </style>
 <script>
 import { mapState, mapActions } from 'Vuex';
 
 import WeatherCard from '../components/weather_card.vue';
 import WeatherItem from '../components/weather_item.vue';
+
+import getPropertiesDateTime from '../utils/dateTime.js';
 
 export default { 
   components: {
@@ -64,13 +73,19 @@ export default {
       return `http://openweathermap.org/img/wn/${this.data.weather[0].icon}@2x.png`;
     },
     speed: function () {
-      return `${this.data.wind.speed * 3.6}Km/H`;
+      return `${this.data.wind.speed}m/s`;
     },
     pressure: function () {
       return `${this.data.main.pressure}hpa`;
     },
     humidity: function () {
       return `${this.data.main.humidity}%`;
+    },
+    dateTime: function () {
+      const d = new Date(this.data.dt * 1000);
+      const proDate = getPropertiesDateTime(d);
+
+      return `${proDate.day} ${proDate.hour}:${proDate.min} ${proDate.ampm}`;
     },
   },
   watch: {

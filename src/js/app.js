@@ -9,6 +9,9 @@ import Framework7Vue from 'framework7-vue/framework7-vue.esm.bundle.js';
 
 // Import Framework7 Styles
 import 'framework7/css/framework7.bundle.css';
+// import 'animate.min.css';
+import 'animate.css/animate.css';
+// import 'animate.compat.css';
 
 // Import Icons and App Custom Styles
 import '../css/icons.css';

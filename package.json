@@ -23,6 +23,7 @@
     "Samsung >= 5"
   ],
   "dependencies": {
+    "animate.css": "^4.1.0",
     "axios": "^0.19.2",
     "dom7": "^2.1.5",
     "framework7": "^5.7.5",
