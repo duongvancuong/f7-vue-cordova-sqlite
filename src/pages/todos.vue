@@ -2,13 +2,13 @@
   <f7-page name="todos">
     <f7-navbar title="Task" back-link="Back"></f7-navbar>
     <f7-block-title>List Tasks</f7-block-title>
-    <Task 
+    <Task
       v-if="status === 'done'"
       v-for="task in tasks"
       :key="task.id"
       name="task"
-      :title="task.title" 
-      :subtitle="formatDate(task.startAt, task.endAt)" 
+      :title="task.title"
+      :subtitle="formatDate(task.startAt, task.endAt)"
       :status="task.status"
       :showEdit="() => showEdit(task)"
       :deleteTask="() => onDeleted(task)"
@@ -82,7 +82,7 @@
         </f7-list>
       </f7-page>
     </f7-popup>
-    
+
     <f7-fab position="right-bottom" slot="fixed" >
       <f7-icon ios="f7:pencil" aurora="f7:pencil" md="material:pencil"></f7-icon>
       <f7-icon ios="f7:pencil_slash" aurora="f7:pencil_slash" md="material:pencil_slash"></f7-icon>
@@ -112,7 +112,7 @@
       Task,
     },
     data() {
-      return { 
+      return {
         popupOpened: false,
         newTodoTitle: '',
         task: {
@@ -150,22 +150,22 @@
             status: 'todo',
           };
           this.popupOpened = false;
-        } 
+        }
       },
     },
     mounted() {
       this.actionFetch();
-    }, 
+    },
     methods: {
       formatDate(startAt, endAt) {
         const _startAt = new Date(startAt);
         const _endAt = new Date(endAt);
-        return `${_startAt.toLocaleDateString()} ~ ${_endAt.toLocaleDateString()}`;  
+        return `${_startAt.toLocaleDateString()} ~ ${_endAt.toLocaleDateString()}`;
       },
       updateStatus(task, status) {
-        this.task = Object.assign({ 
-          ...task, 
-          startAt: [ new Date(task.startAt) ], 
+        this.task = Object.assign({
+          ...task,
+          startAt: [ new Date(task.startAt) ],
           endAt: [ new Date(task.endAt) ],
           status,
         });
@@ -194,9 +194,9 @@
         const self = this;
 
         self.mode = 'edit';
-        self.task = Object.assign({ 
-          ...task, 
-          startAt: [ new Date(task.startAt) ], 
+        self.task = Object.assign({
+          ...task,
+          startAt: [ new Date(task.startAt) ],
           endAt: [ new Date(task.endAt) ],
         });
         self.popupOpened = true;
