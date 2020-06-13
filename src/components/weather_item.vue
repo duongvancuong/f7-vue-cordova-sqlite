@@ -4,17 +4,17 @@
       <div class="weather--background">
         <f7-card-content>
           <div class="display-flex flex-direction-column justify-content-center">
-            <img class="align-self-center" :src="iconUrl" width="50%"/>
             <div class="align-self-center">
-              <p class="weather__value"> {{ valueItem }} </p> 
+              <p class="weather__value"> {{ dayVaule }} </p>
             </div>
+            <img class="align-self-center" :src="imgUrl" width="100%"/>
           </div>
         </f7-card-content>
       </div>
     </f7-card-content>
     <f7-card-footer class="weather__footer display-flex flex-direction-column justify-content-center">
       <div class="align-self-center">
-        <p class="weather__value weather__value--mg-0"> {{ titleItem }} </p> 
+        <p class="weather__value weather__value--mg-0"> {{ temperature }}°C</p>
       </div>
     </f7-card-footer>
   </f7-card>
@@ -22,7 +22,7 @@
 <style lang="scss" scoped>
 .weather{
   &--background {
-    background-color: #fff;
+    background-color: #59b3e4ba;
   }
   &__value {
     font-family: monospace;
@@ -41,29 +41,29 @@
 }
 </style>
 <script>
-export default { 
+export default {
   name: 'WeatherItem',
-  props : { 
+  props : {
     icon_url: {
       type: String,
       required: true,
     },
-    value: {
-      type: String,
+    temp: {
+      type: Number,
       required: true,
     },
-    title: {
+    day: {
       type: String,
       required: true,
     },
   },
   data() {
-    return { 
-      iconUrl: this.icon_url,
-      valueItem: this.value,
-      titleItem: this.title,
+    return {
+      imgUrl: this.icon_url,
+      temperature: (this.temp - 273.15).toFixed(0),
+      dayVaule: this.day,
     };
   },
   methods: { },
-}  
+}
 </script>

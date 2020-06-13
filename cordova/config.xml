@@ -24,6 +24,9 @@
         <access origin="*" />
     </platform>
     <allow-navigation href="*" />
+    <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+      <string>need location access to find things nearby</string>
+    </edit-config>
     <platform name="ios">
         <config-file parent="CFBundleAllowMixedLocalizations" platform="ios" target="*-Info.plist">
             <true />
@@ -69,4 +72,5 @@
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-sqlite-storage" spec="~5.0.0" />
     <plugin name="cordova-plugin-screen-orientation" spec="~3.0.2" />
+    <plugin name="cordova-plugin-geolocation" />
 </widget>

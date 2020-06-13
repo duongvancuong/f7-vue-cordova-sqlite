@@ -1,13 +1,13 @@
 <template>
   <f7-app :params="f7params" >
-    <f7-panel left cover swipe>
-      <f7-view>
-        <f7-page class="panel-background">
-          <f7-navbar title="Setting"></f7-navbar>
-          <f7-block>Left panel content goes here</f7-block>
-        </f7-page>
-      </f7-view>
-    </f7-panel>
+    <!-- <f7&#45;panel left cover swipe> -->
+    <!--   <f7&#45;view> -->
+    <!--     <f7&#45;page class="panel&#45;background"> -->
+    <!--       <f7&#45;navbar title="Setting"></f7&#45;navbar> -->
+    <!--       <f7&#45;block>Left panel content goes here</f7&#45;block> -->
+    <!--     </f7&#45;page> -->
+    <!--   </f7&#45;view> -->
+    <!-- </f7&#45;panel> -->
     <f7-view main class="safe-areas" url="/"></f7-view>
   </f7-app>
 </template>
